@@ -1,0 +1,28 @@
+<% layout = "layouts/boilerplate"; %>
+<div id="filters" class="mt-3">
+   <div class="filter">
+    <i class="fa-solid fa-fire"></i>
+    Treading
+   </div> 
+
+</div>
+<br>
+<h3>All Products</h3>
+<div class="row mt-3" >
+    <% for (let product of allProducts) { %> <!-- Iterating through the products -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <a href="/products/<%= product._id %>" class="product-link"> <!-- Link to product details -->
+                <div class="card product-card"> <!-- Card structure for product -->
+                    <img src="<%= product.image %>" class="card-img-top" alt="product_image" style="height: 20rem;"> <!-- Display product image -->
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><%= product.title %></b><br> <!-- Product title -->
+                            ₹<%= product.price.toLocaleString("en-IN") %> <!-- Formatted product price -->
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    <% } %>
+</div>
+

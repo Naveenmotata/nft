@@ -1,0 +1,32 @@
+<% layout = "layouts/boilerplate"; %>
+
+<div class="product-detail">
+    <h3><%= productData.title %></h3> <!-- Display product title -->
+    <img src="<%= productData.image %>" alt="product_image" class="img-fluid" style="height: 30rem;"> <!-- Display product image -->
+    <p><b>Price:</b> ₹<%= productData.price.toLocaleString("en-IN") %></p> <!-- Display product price -->
+    <p><b>Description:</b> <%= productData.description %></p> <!-- Display product description -->
+    <p><b>Location:</b> <%= productData.location %></p> <!-- Display product location -->
+    <p><b>Delivery Fee:</b> ₹<%= productData.deliveryFee.toLocaleString("en-IN") %></p> <!-- Display delivery fee -->
+    <p><b>Platform Fee:</b> ₹<%= productData.platformFee.toLocaleString("en-IN") %></p> <!-- Display platform fee -->
+
+    <div class="actions">
+        <% if (user && productData.seller.equals(user._id)) { %> <!-- Check if the logged-in user is the seller -->
+            <a href="/products/<%= productData._id %>/edit" class="btn btn-primary">Edit</a> <!-- Link to edit the product -->
+            <form action="/products/<%= productData._id %>?_method=DELETE" method="POST" style="display:inline;"> <!-- Delete form -->
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        <% } %> <!-- End of seller check -->
+
+        <!-- Add to Cart Button -->
+        <form action="/cart/add" method="POST" style="display:inline;">
+            <input type="hidden" name="productId" value="<%= productData._id %>">
+            <button type="submit" class="btn btn-secondary">Add to Cart</button>
+        </form>
+        
+        <!-- Buy Now Button -->
+        <form action="/cart/checkout" method="POST" style="display:inline;">
+            <input type="hidden" name="productId" value="<%= productData._id %>">
+            <button type="submit" class="btn btn-success">Buy Now</button>
+        </form>
+    </div>
+</div>

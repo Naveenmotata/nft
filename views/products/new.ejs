@@ -1,0 +1,31 @@
+
+<% layout = "layouts/boilerplate"; %>
+<form action="/products" method="POST" class="mb-5">
+    <div class="form-group mb-3">
+        <label for="productTitle">Product Title:</label>
+        <input type="text" class="form-control" id="productTitle" name="product[title]" required>
+    </div>
+    <div class="form-group mb-3">
+        <label for="productPrice">Price:</label>
+        <input type="number" class="form-control" id="productPrice" name="product[price]" step="0.01" required>
+    </div>
+    <div class="form-group mb-3">
+        <label for="productDescription">Description:</label>
+        <textarea class="form-control" id="productDescription" name="product[description]" required></textarea>
+    </div>
+    <div class="form-group mb-3">
+        <label for="productCategory">Category:</label>
+        <input type="text" class="form-control" id="productCategory" name="product[category]" required>
+    </div>
+    <div class="form-group mb-3">
+        <label for="productLocation">Location:</label> <!-- Added Location field -->
+        <input type="text" class="form-control" id="productLocation" name="product[location]" required> <!-- Updated name -->
+    </div>
+    <div class="form-group mb-3">
+        <label for="productImageUrl">Image URL:</label>
+        <input type="text" class="form-control" id="productImageUrl" name="product[image]" >
+
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Add Product</button>
+</form>
